@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import SpringBoot.PoliceHeadquartersRepository;
+import SpringBoot.PoliceheadquartersRepository;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -24,36 +24,36 @@ public class Controller {
 	
 
 	@Autowired
-	private PoliceHeadquartersRepository PHQRep;
+	private PoliceheadquartersRepository PHQRep;
 	
 	@GetMapping("/")
-    public Iterable<PoliceHeadquarters> index() {
+    public Iterable<Policeheadquarters> index() {
         return PHQRep.findAll();
     }
 
 	@PostMapping("/addhq ")
-	public void addhq(@RequestBody PoliceHeadquarters PoliceHeadquarters) {
-		System.out.println(PoliceHeadquarters);
+	public void addhq(@RequestBody Policeheadquarters Policeheadquarters) {
+		System.out.println(Policeheadquarters);
 		
-		PoliceHeadquarters.setstad("test");
-		PoliceHeadquarters.setid(0);
-		PHQRep.save(PoliceHeadquarters);
+		Policeheadquarters.setstad("test");
+		Policeheadquarters.setid(0);
+		PHQRep.save(Policeheadquarters);
 	}
 	
-	@GetMapping("/personel")
-    public PoliceHeadquarters byId(@RequestParam int id) {
-		return PHQRep.findByid(id);
-    }
+	//@GetMapping("/personel")
+    //public Policeheadquarters byId(@RequestParam int id) {
+		//return PHQRep.findByid(id);
+    //}
 	
-	@GetMapping("/personel?stad")
-    public Iterable<PoliceHeadquarters> bystad(@RequestParam String stad) {
-		System.out.println("Name: " + stad);
-        return PHQRep.findBystadContains(stad);
-    }
+	//@GetMapping("/personel?stad")
+//    public Iterable<Policeheadquarters> bystad(@RequestParam String stad) {
+		//System.out.println("Name: " + stad);
+     //   return PHQRep.findBystadContains(stad);
+   // }
 	
 	@GetMapping("/tophd ")
-    public Iterable<PoliceHeadquarters> PoliceHeadquarters() {
-        return PHQRep.getAllPoliceHeadquarters();
+    public Iterable<Policeheadquarters> Policeheadquarters() {
+        return PHQRep.getAllPoliceheadquarters();
     }
 	
 	
